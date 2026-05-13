@@ -146,7 +146,7 @@ isFinCWS : (n : ℕ) → isFinCW (S {ℓ} n .fst)
 isFinCWS n = subst isFinCW (isoToPath lem)
              (snd (finCWLift _ (_ , isFinCWSn)))
   where
-  lem : Iso (Lift (S₊ n)) (S n .fst)
+  lem : Iso (Lift _ (S₊ n)) (S n .fst)
   lem = compIso (invIso LiftIso) (invIso rUnit*×Iso)
 
 isConnectedS : (n : ℕ) → isConnected (suc n) (S {ℓ} n .fst)

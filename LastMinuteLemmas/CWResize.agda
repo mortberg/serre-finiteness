@@ -98,17 +98,16 @@ cancel-isEmbedding : {ℓ ℓ' ℓ'' : Level} {A : Type ℓ} {B : Type ℓ'} {C 
   → (f : A → B) → (g : B → C)
   → isEmbedding g → isEmbedding (g ∘ f) → isEmbedding f
 cancel-isEmbedding f g Embg Embgf w x
-  = isEquiv[equivFunA≃B∘f]→isEquiv[f] (cong f) (cong g , Embg (f w) (f x)) (Embgf w x) 
+  = isEquiv[equivFunA≃B∘f]→isEquiv[f] (cong f) (cong g , Embg (f w) (f x)) (Embgf w x)
 
 module Lemmas {ℓ : Level} where
   resize : finCW ℓ-zero → finCW ℓ
   resize = finCWLift ℓ
 
   isEmb : isEmbedding resize
-  isEmb = cancel-isEmbedding resize fst
-    (λ _ _ → isEmbeddingFstΣProp λ _ → PT.squash₁)
-    (isEmbedding-∘ {f = Lift} {h = fst} (liftEmbedding ℓ-zero ℓ)
-       (λ _ _ → isEmbeddingFstΣProp λ _ → PT.squash₁))
+  isEmb = cancel-isEmbedding resize fst (λ _ _ → isEmbeddingFstΣProp λ _ → PT.squash₁)
+                                        (isEmbedding-∘ {f = Lift ℓ} {h = fst}
+                                                       (liftEmbedding ℓ-zero ℓ) λ _ _ → isEmbeddingFstΣProp λ _ → PT.squash₁)
 
   isSurj : isSurjection resize
   isSurj (A , p) = PT.rec PT.squash₁ main p
