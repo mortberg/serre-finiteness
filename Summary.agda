@@ -144,10 +144,10 @@ Proposition-9 : (n : ℕ) {X Y Z X' Y' Z' : Pointed ℓ}
 Proposition-9 = CofiberSeqMapConn
 
 -- Corollary 10 (connectivity of suspension map)
-Corollary-10 : (n : ℕ) {X Y : Type₀} (f : X → Y)
-  → isConnectedFun n f
-  → isConnectedFun (suc n) (suspFun f)
-Corollary-10 n f cf = isConnectedSuspFun f n cf
+Corollary-10 : (k : ℕ) {X Y : Type₀} (f : X → Y)
+  → isConnectedFun k f
+  → isConnectedFun (suc k) (suspFun f)
+Corollary-10 k f cf = isConnectedSuspFun f k cf
 
 -- Proposition 11 (connectivity of join map)
 Proposition-11 : {ℓ' : Level} {X₁ X₂ : Type ℓ} {Y₁ Y₂ : Type ℓ'}
@@ -174,8 +174,6 @@ Theorem-A = saf→saf<->
 Theorem-B : (X : Pointed ℓ) (hX : saf X) (n : ℕ) (cX : isConnected (3 + n) (typ X)) → isFP (πAb n X)
 Theorem-B = saf→isFPBottomπ
 
--- Note: there is a minor typo in the paper for Theorem 13 ∙ the type
--- X should be 1-connected.
 Theorem-13 : (X : Pointed ℓ) (safX : saf X) (scX : isConnected 3 (typ X)) (n : ℕ) → isFP (πAb n X)
 Theorem-13 = saf→isFPπ
 
